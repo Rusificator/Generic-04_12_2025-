@@ -1,0 +1,50 @@
+class Mass <T extends Comparable <T>> {
+    T[]a;
+    Mass(T []a)
+    {
+        this.a=a.clone();
+    }
+    void print()
+    {
+
+        for(int i=0;i<a.length;i++)
+            System.out.print(a[i]+" ");
+       System.out.println();
+    }
+    T elemByInd(int i) throws ArrayIndexOutOfBoundsException
+    {
+        if(i<0||i>a.length)
+            throw new ArrayIndexOutOfBoundsException("Выход за границы массива");
+        return a[i];
+
+    }
+    void obr()
+    {
+        for(int i=0;i<a.length/2;i++)
+        {
+            T t=a[i];
+            a[i]=a[a.length-1-i];
+            a[a.length-1-i]=t;
+        }
+    }
+
+    void chast(int p) throws ArrayIndexOutOfBoundsException
+    {
+        if(p<0||p>a.length)
+            throw new ArrayIndexOutOfBoundsException("Выход за гарницы массива");
+        for(int i=0;i<p;i++)
+            System.out.println(a[i]+" ");
+    }
+
+    T max()
+    {
+        T M=a[0];
+        for (int i=1;i<a.length;i++)
+        {
+            //if( (Comparable)a[i].compareTo((Comparable) M) )
+            if(a[i].compareTo(M)>0)
+                M=a[i];
+        }
+        return M;
+    }
+}
